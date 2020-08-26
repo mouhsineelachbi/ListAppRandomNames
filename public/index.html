@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA5_3IG6vPBFeXSBiltm5cdUUQ6EpgijiA",
+            authDomain: "fbbasics-dbf0f.firebaseapp.com",
+            databaseURL: "https://fbbasics-dbf0f.firebaseio.com",
+            projectId: "fbbasics-dbf0f",
+            storageBucket: "fbbasics-dbf0f.appspot.com",
+            messagingSenderId: "810388463366",
+            appId: "1:810388463366:web:a2679e366a20c55fc70887",
+            measurementId: "G-DVX0XH3XG5"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <h1>My Awesome App</h1>
+</body>
+</html>
