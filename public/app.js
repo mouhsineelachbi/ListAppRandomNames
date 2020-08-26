@@ -29,3 +29,48 @@ auth.onAuthStateChanged(user => {
     }
 
 })
+
+// FireStore
+
+const db = firebase.firestore();
+
+const createThing = document.getElementById('createThing');
+const thigsList = document.getElementById('thigsList');
+
+let thingsRef;
+let unsubscribe;
+
+// Change data only for Loged in users
+auth.onAuthStateChanged(user => {
+    if(user){
+        const { serverTimestamp } = firebase.firestore.FieldValue;
+        thingsRef = db.collection('things');
+        createThing.onclick = () => {
+            thingsRef.add({
+                uid: user.uid,
+                firstname: faker.name.firstName(),
+                lastname: faker.name.lastName(),
+                age: faker.random.number({
+                    'min': 20,
+                    'max': 70
+                    }),
+                createdAt: serverTimestamp()
+            })
+        }
+
+        unsubscribe = thingsRef
+            .where('uid', '==', user.uid)
+            .orderBy('createdAt')
+            .onSnapshot(querySnapshot => {
+                const items = querySnapshot.docs.map(doc => {
+                    return `<li>${doc.data().firstname} ${doc.data().lastname}</li>`
+                 });
+            thigsList.innerHTML = items.join('');
+            })
+            console.log("unsubscribe : ", unsubscribe);
+    }
+    else {
+        unsubscribe && unsubscribe();
+        console.log("unsubscribe : ", unsubscribe);
+    }
+})
